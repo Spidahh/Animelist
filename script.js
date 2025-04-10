@@ -1,3 +1,4 @@
+
 function renderAnime(data) {
   const container = document.getElementById("animeList");
   const genreFilter = document.getElementById("genreFilter");
@@ -5,7 +6,7 @@ function renderAnime(data) {
 
   const genres = new Set();
   data.forEach(row => {
-    genres.add(row["Genere principale"]);
+    if (row["Genere principale"]) genres.add(row["Genere principale"]);
   });
 
   genreFilter.innerHTML = '<option value="Tutti">Tutti</option>';
@@ -24,7 +25,7 @@ function renderAnime(data) {
         <img src="${anime["Link con immagine rappresentativa"]}" alt="${anime["Titolo originale"]}">
         <div class="anime-info">
           <h3>${anime["Titolo originale"]}</h3>
-          <p><strong>Genere:</strong> ${anime["Genere principale"]} / ${anime["Genere secondario"]}</p>
+          <p><strong>Genere:</strong> ${anime["Genere principale"]}</p>
           <p><strong>Voto:</strong> ${anime["VOTO"]}/10</p>
           <p><strong>Anno:</strong> ${anime["ANNO"]}</p>
         </div>
